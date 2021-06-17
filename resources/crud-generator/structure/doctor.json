@@ -1,0 +1,126 @@
+{
+    "fields": [
+        {
+            "name": "first_name",
+            "type": "string"
+        },
+        {
+            "name": "last_name",
+            "type": "string"
+        },
+        {
+            "name": "specialization",
+            "type": "select",
+            "options": {
+                "1": "Internists",
+                "2": "Medical Geneticists"
+            }
+        },
+        {
+            "name": "residential_address",
+            "type": "text"
+        },
+        {
+            "name": "institute_address",
+            "type": "text"
+        },
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "mobile",
+            "type": "string"
+        },
+        {
+            "name": "date_of_birth",
+            "type": "date"
+        },
+        {
+            "name": "gender",
+            "type": "enum",
+            "options": {
+                "male": "Male",
+                "female": "Female"
+            }
+        },
+        {
+            "name": "marital_status",
+            "type": "enum",
+            "options": {
+                "married": "Married",
+                "single": "Single"
+            }
+        },
+        {
+            "name": "nationality",
+            "type": "string"
+        },
+        {
+            "name": "professional_statement",
+            "type": "json"
+        },
+        {
+            "name": "education_qualiication",
+            "type": "json"
+        },
+        {
+            "name": "experience_after_graduation",
+            "type": "json"
+        },
+        {
+            "name": "registration_number",
+            "type": "string"
+        },
+        {
+            "name": "user_id",
+            "type": "bigint#unsigned"
+        }
+    ],
+    "schema": [
+        {
+            "name": "gender",
+            "type": "enum"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "user_id",
+            "references": "id",
+            "on": "users",
+            "onDelete": "cascade"
+        },
+        {
+            "column": "specialization",
+            "references": "id",
+            "on": "doctor_specializations",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "user",
+            "type": "belongsTo",
+            "class": "App\\Models\\User"
+        },
+        {
+            "name": "user",
+            "type": "belongsTo",
+            "class": "App\\Models\\DoctorSpecialization"
+        }
+    ],
+    "validations": [
+        {
+            "field": "first_name",
+            "rules": "required|max:50"
+        },
+        {
+            "field": "email",
+            "rules": "required|email|max:50"
+        },
+        {
+            "field": "mobile",
+            "rules": "required|digits:10"
+        }
+    ]
+}

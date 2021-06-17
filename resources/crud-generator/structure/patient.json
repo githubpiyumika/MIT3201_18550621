@@ -1,0 +1,123 @@
+{
+    "fields": [
+        {
+            "name": "first_name",
+            "type": "string"
+        },
+        {
+            "name": "last_name",
+            "type": "string"
+        },
+        {
+            "name": "address",
+            "type": "text"
+        },
+        {
+            "name": "nic",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "contact_number",
+            "type": "string"
+        },
+        {
+            "name": "date_of_birth",
+            "type": "date"
+        },
+        {
+            "name": "weight",
+            "type": "decimal"
+        },
+        {
+            "name": "height",
+            "type": "decimal"
+        },
+        {
+            "name": "emergency_contact_name",
+            "type": "string"
+        },
+        {
+            "name": "emergency_contact_no",
+            "type": "string"
+        },
+        {
+            "name": "emergency_address",
+            "type": "text"
+        },
+        {
+            "name": "chicken_pox",
+            "type": "radio"
+        },
+        {
+            "name": "measles",
+            "type": "radio"
+        },
+        {
+            "name": "hepatitis_b",
+            "type": "radio"
+        },
+        {
+            "name": "medical_problems",
+            "type": "mediumtext"
+        },
+        {
+            "name": "has_insurance",
+            "type": "radio"
+        },{
+            "name": "insuared_company",
+            "type": "string"
+        },{
+            "name": "insuared_company_address",
+            "type": "mediumtext"
+        },{
+            "name": "policy_number",
+            "type": "string"
+        },{
+            "name": "expiary_date",
+            "type": "date"
+        },{
+            "name": "allergies",
+            "type": "mediumtext"
+        },{
+            "name": "regular_medications",
+            "type": "mediumtext"
+        }
+    ],
+    "validations": [
+        {
+            "field": "first_name",
+            "rules": "required|max:20"
+        },
+        {
+            "field": "last_name",
+            "rules": "max:20"
+        },
+        {
+            "field": "email",
+            "rules": "required|email|max:60"
+        },
+    
+        {
+            "field": "contact_number",
+            "rules": "required|digits:10"
+        },
+    
+        {
+            "field": "date_of_birth",
+            "rules": "required|date"
+        },
+        
+        {
+            "field": "weight",
+            "rules": "required|numeric"
+        },
+        {
+            "field": "height",
+            "rules": "required|numeric"
+        }
+    ]
+}

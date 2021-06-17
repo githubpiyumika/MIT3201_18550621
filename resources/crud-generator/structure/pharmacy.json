@@ -1,0 +1,89 @@
+{
+    
+    "fields": [
+        {
+            "name": "first_name",
+            "type": "string"
+        },
+        {
+            "name": "last_name",
+            "type": "string"
+        },
+        {
+            "name": "registration_number",
+            "type": "string"
+        },
+       
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "contact_number",
+            "type": "string"
+        },
+        {
+            "name": "address",
+            "type": "text"
+        },
+        
+        {
+            "name": "pharmacy_name",
+            "type": "string"
+        },
+        {
+            "name": "pharmacy_address",
+            "type": "text"
+        },
+        {
+            "name": "pharmacy_city",
+            "type": "string"
+        },
+        {
+            "name": "pharmacy_phone",
+            "type": "string"
+        },
+        {
+            "name": "fax_number",
+            "type": "string"
+        }
+    ],
+    "validations": [
+        {
+            "field": "first_name",
+            "rules": "required|max:20"
+        },
+        {
+            "field": "last_name",
+            "rules": "max:20"
+        },
+        {
+            "field": "email",
+            "rules": "required|email|max:60"
+        },
+        {
+            "field": "registration_number",
+            "rules": "required|max:10"
+        },
+        {
+            "field": "email",
+            "rules": "required|email|max:60"
+        },
+        {
+            "field": "pharmacy_name",
+            "rules": "required|string|max:40"
+        },
+        {
+            "field": "contact_number",
+            "rules": "required|digits:10"
+        },
+        {
+            "field": "pharmacy_phone",
+            "rules": "required|digits:10"
+        },
+        {
+            "field": "fax_number",
+            "rules": "numeric|digits:10"
+        }
+    ]
+}

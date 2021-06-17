@@ -1,0 +1,79 @@
+{
+    "fields": [
+        {
+            "name": "patient_id",
+            "type": "bigint#unsigned"
+        },
+        {
+            "name": "doctor_id",
+            "type": "bigint#unsigned"
+        }, 
+        {
+            "name": "pharmacy_id",
+            "type": "bigint#unsigned"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        },
+        {
+            "name": "status",
+            "type": "enum",
+            "options": {
+                "pending": "Pending",
+                "checked": "Checked",
+                "packing": "Packing Medicine",
+                "dispatched": "Parcel Dispatched",
+                "delivered": "Delivered"
+            }
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "patient_id",
+            "references": "id",
+            "on": "patients",
+            "onDelete": "cascade"
+        },
+        {
+            "column": "doctor_id",
+            "references": "id",
+            "on": "doctors",
+            "onDelete": "cascade"
+        },
+        {
+            "column": "pharmacy_id",
+            "references": "id",
+            "on": "pharmacies",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "patient",
+            "type": "belongsTo",
+            "class": "App\\Models\\Patient"
+        },
+        {
+            "name": "doctor",
+            "type": "belongsTo",
+            "class": "App\\Models\\Doctor"
+        },
+        {
+            "name": "pharmacy",
+            "type": "belongsTo",
+            "class": "App\\Models\\Pharmacy"
+        }
+    ],
+    "validations": [
+        {
+            "field": "patient_id",
+            "rules": "required"
+        },
+        {
+            "field": "doctor_id",
+            "rules": "required"
+        }
+
+    ]
+}
