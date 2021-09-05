@@ -1,5 +1,21 @@
 @extends('layouts.admin')
+@section('styles')
+<style>
+    .pro-image-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
 
+    .pro-image-wrapper figure {
+        padding-right: 15px
+    }
+
+    .pro-image-wrapper img {
+        width: 150px;
+        border-radius: 5px;
+    }
+</style>
+@endsection
 @section('content')
 
 

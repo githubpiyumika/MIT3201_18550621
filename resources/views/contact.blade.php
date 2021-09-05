@@ -28,8 +28,8 @@
 			<div id="contact_info">
 				<h3>Contacts info</h3>
 				<p>
-					11 Fifth Ave - New York, US<br> + 61 (2) 8093 3400<br>
-					<a href="#">info@domain.com</a>
+					11 Fifth Ave - Colombo 7, Sri Lanka<br> + 9411 809 3400<br>
+					<a href="#">info@happyhealthcare.lk</a>
 				</p>
 				<h4>Get directions</h4>
 				<form action="http://maps.google.com/maps" method="get" target="_blank">
@@ -59,7 +59,9 @@
 			<div class="box_general">
 				<h3>Contact us</h3>
 				<p>
-					Mussum ipsum cacilds, vidis litro abertis.
+					Interested in our telemedicine platform? Want to learn more about offering Happy Health Care? Get in
+					touch – we’d
+					love to tell you how we’re different.
 				</p>
 				<div>
 					<div id="message-contact"></div>

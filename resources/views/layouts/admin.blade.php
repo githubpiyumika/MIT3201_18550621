@@ -8,7 +8,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ config('app.name', 'Laravel') }}</title>
+	<title>{{ config('app.name', 'Happy Health Care') }}</title>
 
 	<!-- GOOGLE WEB FONT -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"

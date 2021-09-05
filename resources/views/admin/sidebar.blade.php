@@ -7,27 +7,34 @@
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
         <a class="nav-link" href="{{route('doctors.index')}}">
-            <i class="fa fa-fw fa-dashboard"></i>
+            <i class="fa fa-fw fa-user-md"></i>
             <span class="nav-link-text">Doctors</span>
         </a>
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
         <a class="nav-link" href="{{route('pharmacies.index')}}">
-            <i class="fa fa-fw fa-dashboard"></i>
+            <i class="fa fa-fw fa-ambulance"></i>
             <span class="nav-link-text">Pharmacies</span>
         </a>
     </li>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
         <a class="nav-link" href="{{route('patients.index')}}">
-            <i class="fa fa-fw fa-dashboard"></i>
+            <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Patients</span>
         </a>
     </li>
 
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
         <a class="nav-link" href="{{route('doctor-specializations.index')}}">
-            <i class="fa fa-fw fa-dashboard"></i>
+            <i class="fa fa-fw fa-book"></i>
             <span class="nav-link-text">Doctor Specializations</span>
+        </a>
+    </li>
+
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <a class="nav-link" href="{{route('admin.reports.index')}}">
+            <i class="fa fa-fw fa-book"></i>
+            <span class="nav-link-text">Reports</span>
         </a>
     </li>
 

@@ -102,7 +102,20 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-
+            <div class="pro-image-wrapper">
+                @if (isset($doctor) && $doctor->getFirstMediaUrl('avatar'))
+                <figure>
+                    <img src="{{$doctor->getFirstMediaUrl('avatar')}}" alt="" class="img-fluid">
+                </figure>
+                @endif
+                <div class="form-group {{ $errors->has('profile_image') ? 'has-error' : ''}}">
+                    <label for="profile_image"
+                        class="control-label {{ $errors->has('profile_image') ? 'text-danger' : ''}}">{{ 'Profile Image' }}</label>
+                    <input class="form-control" name="profile_image" type="file" id="profile_image"
+                        value="{{ isset($doctor->profile_image) ? $doctor->profile_image : old('profile_image') }}">
+                    {!! $errors->first('profile_image', '<p class="help-block text-danger">:message</p>') !!}
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
 

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Mail\UserCreated;
 use App\Models\Doctor;
 use App\Models\DoctorSpecialization;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class DoctorsController extends Controller
 {
@@ -69,29 +71,33 @@ class DoctorsController extends Controller
      */
     public function store(Request $request)
     {
+        DB::transaction(function () use ($request) {
+            $this->validate($request, [
+                'first_name' => 'required|max:50',
+                'email' => 'required|email|max:50|unique:users,email',
+                'mobile' => 'required|digits:10',
+                'registration_number' => 'required',
+                'professional_statement' => 'required',
+            ]);
+            $requestData = $request->all();
 
-        $this->validate($request, [
-            'first_name' => 'required|max:50',
-            'email' => 'required|email|max:50|unique:users,email',
-            'mobile' => 'required|digits:10',
-            'registration_number' => 'required',
-            'professional_statement' => 'required',
-        ]);
-        $requestData = $request->all();
+            $password = Str::random(8);
 
-        // we create a associated user account with a random password
-        $user =  User::create([
-            'name' => $request->first_name,
-            'email' => $request->email,
-            'password' => Hash::make('12345678'),
-            'user_type' => User::USER_TYPE_DOCTOR
-        ]);
+            // we create a associated user account with a random password
+            $user =  User::create([
+                'name' => $request->first_name,
+                'email' => $request->email,
+                'password' => Hash::make($password),
+                'user_type' => User::USER_TYPE_DOCTOR
+            ]);
 
-        //@todo
-        // need to send the random generated password to the doctor's email
+            // send the random generated password to the patients's email
+            Mail::to($user)->send(new UserCreated($user, $password));
 
-        $requestData['user_id'] = $user->id;
-        Doctor::create($requestData);
+            $requestData['user_id'] = $user->id;
+            $doctor = Doctor::create($requestData);
+            $doctor->addMedia($request->profile_image);
+        });
 
         return redirect('admin/doctors')->with('flash_message', 'Doctor added!');
     }
@@ -145,6 +151,9 @@ class DoctorsController extends Controller
 
         $doctor = Doctor::findOrFail($id);
         $doctor->update($requestData);
+
+        $doctor->addMediaFromRequest('profile_image')->toMediaCollection('avatar');
+        $doctor->update();
 
         return redirect('admin/doctors')->with('flash_message', 'Doctor updated!');
     }

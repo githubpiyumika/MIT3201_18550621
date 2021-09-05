@@ -60,9 +60,11 @@
                                 title="Patient Profile"><button class="btn btn-info btn-sm"><i class="fa fa-eye"
                                         aria-hidden="true"></i>
                                     Patient Profile</button></a>
+                            @if ($item->status == 'checked')
                             <a href="{{ url('/doctor/inquiry/' . $item->id . '/edit') }}"
                                 title="Add Prescription"><button class="btn btn-primary btn-sm"><i
                                         class="fa fa-pencil-square-o" aria-hidden="true"></i> Prescribe</button></a>
+                            @endif
 
                         </td>
                     </tr>

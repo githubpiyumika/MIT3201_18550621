@@ -8,7 +8,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ config('app.name', 'Laravel') }}</title>
+	<title>{{ config('app.name', 'Happy Health Care') }}</title>
 
 	<!-- GOOGLE WEB FONT -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -74,7 +74,7 @@
 						</li>
 						@else
 						<li><a href="{{ route('login') }}"><i class="pe-7s-user"></i></a></li>
-						<li><a href="{{ route('register') }}"><i class="pe-7s-add-user"></i></a></li>
+						{{-- <li><a href="{{ route('register') }}"><i class="pe-7s-add-user"></i></a></li> --}}
 						@endif
 
 					</ul>
@@ -114,38 +114,25 @@
 					<h5>About</h5>
 					<ul class="links">
 						<li><a href="{{ route('about') }}">About us</a></li>
-						<li><a href="{{ route('faq') }}">FAQ</a></li>
-						<li><a href="{{ route('login') }}">Login</a></li>
-						<li><a href="{{ route('register') }}">Register</a></li>
+						<li><a href="{{ route('search') }}">Doctors</a></li>
+						<li><a href="{{ route('contact') }}">Contact Us</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-4">
 					<h5>Useful links</h5>
 					<ul class="links">
-						<li><a href="#0">Doctors</a></li>
-						<li><a href="#0">Clinics</a></li>
-						<li><a href="#0">Specialization</a></li>
-						<li><a href="#0">Join as a Doctor</a></li>
-						<li><a href="#0">Download App</a></li>
+						<li><a href="{{ route('login') }}">Login</a></li>
+						<li><a href="{{ route('register') }}">Register</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-4">
 					<h5>Contact with Us</h5>
 					<ul class="contacts">
-						<li><a href="tel://61280932400"><i class="icon_mobile"></i> + 61 23 8093 3400</a></li>
+						<li><a href="tel://61280932400"><i class="icon_mobile"></i> + 94 11 803 3400</a></li>
 						<li><a href="mailto:info@happyhealthcare.lk"><i class="icon_mail_alt"></i>
 								help@happyhealthcare.lk</a>
 						</li>
 					</ul>
-					<div class="follow_us">
-						<h5>Follow us</h5>
-						<ul>
-							<li><a href="#0"><i class="social_facebook"></i></a></li>
-							<li><a href="#0"><i class="social_twitter"></i></a></li>
-							<li><a href="#0"><i class="social_linkedin"></i></a></li>
-							<li><a href="#0"><i class="social_instagram"></i></a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<!--/row-->
@@ -158,7 +145,7 @@
 					</ul>
 				</div>
 				<div class="col-md-4">
-					<div id="copy">© 2017 HappyHealthCare</div>
+					<div id="copy">© 2021 Happy Health Care</div>
 				</div>
 			</div>
 		</div>

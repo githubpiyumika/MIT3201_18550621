@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('styles')
+<style>
+	.elip-lines-3 {
+		display: -webkit-box;
+		max-width: 100%;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>
 @endsection
 
 @section('scripts')
@@ -36,6 +45,13 @@
 <div class="container margin_60_35">
 	<div class="row">
 		<div class="col-lg-8">
+
+			@if (count($doctors) == 0 )
+			<div class="alert alert-info">
+				<strong>No doctors found</strong>
+			</div>
+			@endif
+
 			<div class="row">
 				@foreach ($doctors as $doctor)
 
@@ -45,8 +61,8 @@
 						<a href="#0" class="wish_bt"></a>
 						<figure>
 							<a href="{{route('doctor-profile', $doctor->id)}}"><img
-									src="http://www.ansonika.com/findoctor/img/doctor_listing_1.jpg" class="img-fluid"
-									alt="">
+									src="{{$doctor->getFirstMediaUrl('avatar') ? $doctor->getFirstMediaUrl('avatar') :asset('admin-template/img/default-doc.jpg')}}"
+									class="img-fluid" alt="">
 								<div class="preview"><span>Read more</span></div>
 							</a>
 						</figure>
@@ -54,7 +70,8 @@
 							<small>{{$doctor->doctorSpecialization->name}}</small>
 							<h3>Dr. {{$doctor->first_name}} {{$doctor->last_name}}</h3>
 
-							<p>{!! nl2br($doctor->professional_statement) !!}</p>
+							<p class="elip-lines-3">{!! nl2br($doctor->professional_statement) !!}</p>
+
 						</div>
 						<ul>
 							<li>

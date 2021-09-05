@@ -56,6 +56,10 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'payhere_mechant_id' => env('PH_MERCHANT_ID', null),
+
+    'proxy_url' => env('PROXY_URL', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

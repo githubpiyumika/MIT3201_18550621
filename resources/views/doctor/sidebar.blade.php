@@ -19,7 +19,7 @@
     </li>
 
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-        <a class="nav-link" href="{{route('doctor-specializations.index')}}">
+        <a class="nav-link" href="{{route('doctor.profile.edit')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Edit Profile</span>
         </a>

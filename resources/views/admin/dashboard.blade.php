@@ -15,13 +15,14 @@
         <div class="card dashboard text-white bg-primary o-hidden h-100">
             <div class="card-body">
                 <div class="card-body-icon">
-                    <i class="fa fa-fw fa-envelope-open"></i>
+                    <i class="fa fa-fw fa-user-md"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>26 New Messages!</h5>
+                    <h5>{{$doctorToday}} New Doctors!</h5>
+                    <h5>{{$doctorTotal}} Total Doctors!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="messages.html">
+            <a class="card-footer text-white clearfix small z-1" href="/admin/doctors">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -33,13 +34,14 @@
         <div class="card dashboard text-white bg-warning o-hidden h-100">
             <div class="card-body">
                 <div class="card-body-icon">
-                    <i class="fa fa-fw fa-star"></i>
+                    <i class="fa fa-fw fa-user"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>11 New Reviews!</h5>
+                    <h5>{{$patientToday}} New Patients!</h5>
+                    <h5>{{$patientTotal}} Total Patients!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="reviews.html">
+            <a class="card-footer text-white clearfix small z-1" href="/admin/patients">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -54,10 +56,11 @@
                     <i class="fa fa-fw fa-calendar-check-o"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>10 New Bookings!</h5>
+                    <h5>{{$prescriptionToday}} New Inquiries!</h5>
+                    <h5>{{$prescriptionTotal}} Total Inquiries!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="bookings.html">
+            <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -69,10 +72,11 @@
         <div class="card dashboard text-white bg-danger o-hidden h-100">
             <div class="card-body">
                 <div class="card-body-icon">
-                    <i class="fa fa-fw fa-heart"></i>
+                    <i class="fa fa-fw fa-ambulance"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>10 New Bookmarks!</h5>
+                    <h5>{{$pharmacyToday}} New Pharmacies!</h5>
+                    <h5>{{$pharmacyTotal}} Total Pharmacies!</h5>
                 </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="bookmarks.html">

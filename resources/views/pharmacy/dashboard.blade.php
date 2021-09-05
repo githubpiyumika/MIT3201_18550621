@@ -18,10 +18,10 @@
                     <i class="fa fa-fw fa-envelope-open"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>26 New Messages!</h5>
+                    <h5>{{$prescriptionOpen}} Open Prescriptions!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="messages.html">
+            <a class="card-footer text-white clearfix small z-1" href="pharmacy/prescriptions/">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -36,10 +36,10 @@
                     <i class="fa fa-fw fa-star"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>11 New Reviews!</h5>
+                    <h5>{{$prescriptionPacking}} Packing Prescriptions!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="reviews.html">
+            <a class="card-footer text-white clearfix small z-1" href="pharmacy/prescriptions/packing">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -54,10 +54,10 @@
                     <i class="fa fa-fw fa-calendar-check-o"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>10 New Bookings!</h5>
+                    <h5>{{$prescriptionDispatched}} Dispatched Prescriptions!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="bookings.html">
+            <a class="card-footer text-white clearfix small z-1" href="pharmacy/prescriptions/dispatched">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>
@@ -72,10 +72,10 @@
                     <i class="fa fa-fw fa-heart"></i>
                 </div>
                 <div class="mr-5">
-                    <h5>10 New Bookmarks!</h5>
+                    <h5>{{$prescriptionDelivered}} Delivered Prescriptions!</h5>
                 </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="bookmarks.html">
+            <a class="card-footer text-white clearfix small z-1" href="pharmacy/prescriptions/delivered">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                     <i class="fa fa-angle-right"></i>

@@ -50,8 +50,8 @@
 						<div class="row">
 							<div class="col-lg-5 col-md-4">
 								<figure>
-									<img src="http://www.ansonika.com/findoctor/img/doctor_listing_1.jpg" alt=""
-										class="img-fluid">
+									<img src="{{$doctor->getFirstMediaUrl('avatar') ? $doctor->getFirstMediaUrl('avatar') :asset('admin-template/img/default-doc.jpg')}}"
+										alt="" class="img-fluid">
 								</figure>
 							</div>
 							<div class="col-lg-7 col-md-8">
@@ -155,20 +155,20 @@
 					<small>Respond within one hour</small>
 				</div>
 				<div id="message-booking"></div>
-				<form method="post" action="{{route('patient.inquiries.store')}}" id="booking">
+				<form method="post" action="https://sandbox.payhere.lk/pay/checkout" id="booking">
 					{{ csrf_field() }}
 					<input type="hidden" value="{{$patient->id ?? ''}}" name="patient_id">
 					<input type="hidden" value="{{$doctor->id ?? ''}}" name="doctor_id">
 					<div class="row">
 						<div class="col-md-6 ">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Name" name="first_name"
+								<input type="text" class="form-control" placeholder="Name" name="first_name1"
 									value="{{$patient->first_name ?? ''}}" id="first_name">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Last Name" name="last_name"
+								<input type="text" class="form-control" placeholder="Last Name" name="last_name1"
 									value="{{$patient->last_name ?? ''}}" id="last_name">
 							</div>
 						</div>
@@ -178,7 +178,7 @@
 						<div class="col-lg-12">
 							<div class="form-group">
 								<input type="email" class="form-control" placeholder="Email Address"
-									value="{{$patient->email ?? ''}}" name="email" id="email">
+									value="{{$patient->email ?? ''}}" name="email1" id="email">
 							</div>
 						</div>
 					</div>
@@ -187,7 +187,7 @@
 						<div class="col-lg-12">
 							<div class="form-group">
 								<input type="contact_number" class="form-control" placeholder="Contact Number"
-									value="{{$patient->contact_number ?? ''}}" name="contact_number"
+									value="{{$patient->contact_number ?? ''}}" name="contact_number1"
 									id="contact_number">
 							</div>
 						</div>
@@ -196,10 +196,10 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="form-group">
-								<textarea rows="8" id="patient_note" name="patient_note"
-									class="form-control {{ $errors->has('patient_note') ? 'text-danger' : ''}}""
+								<textarea required rows="8" id="custom_1" name="custom_1"
+									class="form-control {{ $errors->has('custom_1') ? 'text-danger' : ''}}"
 									style=" height:200px;" placeholder="Describe your illness"></textarea>
-								{!! $errors->first('patient_note', '<p class="text-danger">:message</p>')
+								{!! $errors->first('custom_1', '<p class="text-danger">:message</p>')
 								!!}
 							</div>
 						</div>
@@ -207,9 +207,36 @@
 					<!-- /row -->
 					<hr>
 					<div style="position:relative;">
-						<input type="submit" class="btn_1 full-width" value="Book Now" id="submit-booking">
+
+						@auth
+						<input type="submit" class="btn_1 full-width" value="Create Inquiry" id="submit-booking">
+						@endauth
+						@guest
+						<a class="btn_1 full-width text-light" href="{{route('login')}}"> Create Inquiry</a>
+						@endguest
+
 					</div>
+
+					<input type="hidden" name="merchant_id" value="{{config('app.payhere_mechant_id')}}">
+					<!-- Replace your Merchant ID -->
+					<input type="hidden" name="return_url" value="{{route('patient.inquiries.confirmed')}}">
+					<input type="hidden" name="cancel_url" value="{{route('patient.inquiries.cancelled')}}">
+					<input type="hidden" name="notify_url" value="{{config('app.proxy_url')}}/patients/pay">
+					<input type="hidden" name="order_id" value="inq">
+					<input type="hidden" name="items"
+						value="Inquiry (Dr. {{$doctor->first_name}} {{$doctor->last_name}})">
+					<input type="hidden" name="currency" value="LKR">
+					<input type="hidden" name="amount" value="1500">
+					<input type="hidden" name="first_name" value="{{$patient->first_name ?? ''}}">
+					<input type="hidden" name="last_name" value="{{$patient->last_name ?? ''}}">
+					<input type="hidden" name="email" value="{{$patient->email ?? ''}}">
+					<input type="hidden" name="phone" value="{{$patient->contact_name ?? ''}}">
+					<input type="hidden" name="address" value="{{$patient->address ?? ''}}">
+					<input type="hidden" name="city" value="">
+					<input type="hidden" name="custom_2" value="{{$patient->id ?? ''}}|{{$doctor->id ?? ''}}">
+					<input type="hidden" name="country" value="Sri Lanka">
 				</form>
+
 			</div>
 			<!-- /box_general -->
 		</aside>

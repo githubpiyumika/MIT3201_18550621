@@ -588,18 +588,18 @@ ul#top_access li#user figure img {
   line-height: 1;
 }
 #logo_home h1 a {
-  width: 163px;
-  height: 36px;
+  width: 132px;
+  height: 45px;
   display: block;
   background: url(../img/logo.png) no-repeat 0 0;
-  background-size: 163px 36px;
+  background-size: 132px 45px;
   text-indent: -9999px;
 }
 
 @media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   #logo_home h1 a {
     background-image: url(../img/logo_2x.png);
-    background-size: 163px 36px;
+    background-size: 132px 45px;
   }
 }
 /* Footer */

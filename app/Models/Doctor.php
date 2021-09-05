@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Doctor extends Model
+class Doctor extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     /**
      * The database table used by the model.
      *
@@ -35,5 +39,12 @@ class Doctor extends Model
     public function doctorSpecialization()
     {
         return $this->belongsTo('App\Models\DoctorSpecialization', 'specialization', 'id');
+    }
+
+    public function registerMediaCollections()
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->singleFile();
     }
 }

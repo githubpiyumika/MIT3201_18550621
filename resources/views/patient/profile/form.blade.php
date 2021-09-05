@@ -68,16 +68,26 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="weight" class="control-label">{{ 'Weight' }}</label>
-            <input class="form-control  {{ $errors->has('weight') ? 'is-invalid' : ''}}" name="weight" type="number"
-                id="weight" value="{{ isset($patient->weight) ? $patient->weight : old('weight')}}">
+
+            <div class="input-group mb-2"> <input class="form-control  {{ $errors->has('weight') ? 'is-invalid' : ''}}"
+                    name="weight" id="weight" value="{{ isset($patient->weight) ? $patient->weight : old('weight')}}">
+                <div class="input-group-append">
+                    <div class="input-group-text">kg</div>
+                </div>
+            </div>
             {!! $errors->first('weight', '<p class="text-danger">:message</p>') !!}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="height" class="control-label">{{ 'Height' }}</label>
-            <input class="form-control {{ $errors->has('height') ? 'is-invalid' : ''}}" name="height" type="number"
-                id="height" value="{{ isset($patient->height) ? $patient->height : old('height')}}">
+            <div class="input-group mb-2">
+                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : ''}}" name="height" id="height"
+                    value="{{ isset($patient->height) ? $patient->height : old('height')}}">
+                <div class="input-group-append">
+                    <div class="input-group-text">cm</div>
+                </div>
+            </div>
             {!! $errors->first('height', '<p class="text-danger">:message</p>') !!}
         </div>
     </div>
