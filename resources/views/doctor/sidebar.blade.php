@@ -25,4 +25,11 @@
         </a>
     </li>
 
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <a class="nav-link" href="{{route('doctor.reports.index')}}">
+            <i class="fa fa-fw fa-book"></i>
+            <span class="nav-link-text">Reports</span>
+        </a>
+    </li>
+
 </ul>

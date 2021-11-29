@@ -45,7 +45,7 @@
 
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-		<a class="navbar-brand" href="index.html">
+		<a class="navbar-brand" href="{{route('admin.dashboard')}}">
 			{{-- <img src="{{asset('admin-template/img/logo.png')}}" data-retina="true" alt="" width="163" height="36">
 			--}}
 			<div style="height:36px">Happy Health Care</div>

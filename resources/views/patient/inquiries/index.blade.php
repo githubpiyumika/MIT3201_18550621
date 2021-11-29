@@ -34,11 +34,26 @@
 		</aside>
 		<!--/aside -->
 
+		<form method="GET" action="{{ url('/patient/doctorsinquiries') }}" accept-charset="UTF-8"
+            class="form-inline my-2 my-lg-0 float-right" role="search">
+            <div class="input-group">
+                <input class="form-control search-top" type="text" name="search" placeholder="Search..."
+                    value="{{ request('search') }}">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+
 		<div class="col-lg-9" id="faq">
 			<div class="box_general">
 				<h3>My Inquiries</h3>
-				<p>
-					Doctor inquiries </p>
+				<p>Doctor inquiries </p>		
+
+				
+
 				<div>
 					@if (count($prescriptions)>0)
 

@@ -30,9 +30,22 @@ class InquiryController extends Controller
                 ->latest()->paginate($perPage);
         } else {
             $prescriptions = Prescription::where('patient_id', '=', $patient->id)
-                //->where('status', '=', 'pending')
+               // ->where('status', '=', 'pending')
                 ->latest()->paginate($perPage);
         }
+
+
+
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $prescriptions = prescriptions::where('status', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $prescriptions = prescriptions::latest()->paginate($perPage);
+        }
+
 
 
         return view('patient/inquiries.index', compact('prescriptions'));

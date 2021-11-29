@@ -71,6 +71,9 @@ Route::prefix('doctor')->middleware(['auth', 'role:doctor'])->group(function () 
 
     Route::get('/profile', 'Doctor\ProfileController@edit')->name('doctor.profile.edit');
     Route::patch('/profile', 'Doctor\ProfileController@update')->name('doctor.profile.update');
+
+    Route::get('report', 'Doctor\ReportController@index')->name('doctor.reports.index');
+    Route::get('report/income-report', 'Doctor\ReportController@income')->name('doctor.reports.income');
 });
 
 Route::prefix('pharmacy')->middleware(['auth', 'role:pharmacist'])->group(function () {

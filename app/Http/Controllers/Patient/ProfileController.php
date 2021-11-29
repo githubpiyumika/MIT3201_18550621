@@ -32,13 +32,14 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+        //return $request->date_of_birth;
         $user_id = Auth::id();
         $this->validate($request, [
             'first_name' => 'required|max:20',
             'last_name' => 'max:20',
             'email' => 'required|email|max:60',
             'contact_number' => 'required|digits:10',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => ['required', 'date', 'before:' . date('Y-m-d')],
             'weight' => 'required|numeric',
             'height' => 'required|numeric'
         ]);

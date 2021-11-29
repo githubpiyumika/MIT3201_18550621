@@ -40,6 +40,7 @@ class PrescriptionsController extends Controller
                 ->latest()->paginate($perPage);
         } else {
             $prescriptions = Prescription::where('status',  $status)
+                ->wherePharmacyId($pharmacy->id)
                 ->latest()->paginate($perPage);
         }
 

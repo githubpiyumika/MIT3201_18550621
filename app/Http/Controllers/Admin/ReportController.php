@@ -31,6 +31,61 @@ class ReportController extends Controller
         return view('admin/reports.index', compact('doctors', 'payTypes'));
     }
 
+    public function status(Request $request)
+    {
+       
+        $registration_number = $request->input('registration_number', '');
+
+
+        $title = 'Status Report'; // Report title
+
+        $meta = []; // For displaying filters description on header
+
+        
+
+        $pharmacies = pharmacies::find($registration_number);
+        
+
+
+        $queryBuilder =  Payment::leftJoin('prescriptions', 'prescriptions.id', '=', 'payments.prescription_id')
+            ->leftJoin('doctors', 'doctors.id', '=', 'prescriptions.doctor_id')
+            ->leftJoin('patients', 'patients.id', '=', 'prescriptions.patient_id')
+            ->select(
+                DB::raw('date(payments.created_at) as created_date'),
+                'pay_type',
+                DB::raw("CONCAT(doctors.first_name,' ',doctors.last_name) as doctor_name"),
+                DB::raw("CONCAT(patients.first_name,' ',patients.last_name) as patient_name"),
+                'amount',
+            )
+            //->whereBetween('payments.created_at', [$fromDate . " 00:00:00", $toDate . " 23:59:59"])
+            ->when($pharmacies, function ($query) use ($pharmacies) {
+                return $query->where('pharmacies.registration_number', $pharmacies->id);
+            })
+           // ->when($payType, function ($query) use ($payType) {
+                //return $query->where('pay_type', $payType);
+            //})
+            ->orderBy($sortBy);
+
+        $columns = [ // Set Column to be displayed
+            
+            'registration_number' => 'registration_number',
+            
+        ];
+
+        // Generate Report with flexibility to manipulate column class even manipulate column value (using Carbon, etc).
+        return PdfReportFacade::of($title, $meta, $queryBuilder, $columns)
+           // ->editColumn('Amount', [
+              //  'class' => 'right bold',
+               // 'displayAs' => function ($result) {
+              //      return $result->amount;
+               // }
+           // ])
+          //  ->showTotal([ // Used to sum all value on specified column on the last table (except using groupBy method). 'point' is a type for displaying total with a thousand separator
+           //     'Amount' => 'point' // if you want to show dollar sign ($) then use 'Total Balance' => '$'
+          //  ])
+            ->stream(); // other available method: download('filename') to download pdf / make() that will producing DomPDF / SnappyPdf instance so you could do any other DomPDF / snappyPdf method such as stream() or download()
+    }
+
     public function income(Request $request)
     {
         $fromDate = $request->input('from_date', '2021-06-16');
@@ -93,4 +148,6 @@ class ReportController extends Controller
             ])
             ->stream(); // other available method: download('filename') to download pdf / make() that will producing DomPDF / SnappyPdf instance so you could do any other DomPDF / snappyPdf method such as stream() or download()
     }
+
+
 }

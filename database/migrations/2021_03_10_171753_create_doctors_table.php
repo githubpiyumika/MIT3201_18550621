@@ -27,8 +27,8 @@ class CreateDoctorsTable extends Migration
             $table->enum('marital_status', ["married", "single"]);
             $table->string('nationality')->nullable();
             $table->text('professional_statement')->nullable();
-            $table->json('education_qualiication')->nullable();
-            $table->json('experience_after_graduation')->nullable();
+            $table->text('education_qualiication')->nullable();
+            $table->text('experience_after_graduation')->nullable();
             $table->string('registration_number')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
